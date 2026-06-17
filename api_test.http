@@ -1,0 +1,28 @@
+### 1. Register User
+POST http://localhost:5000/api/user/register
+Content-Type: application/json
+
+{
+    "name": "Test User",
+    "email": "test{{$timestamp}}@example.com",
+    "password": "password123"
+}
+
+###
+
+### 2. Login User
+# After sending this, copy the 'token' from the response
+POST http://localhost:5000/api/user/login
+Content-Type: application/json
+
+{
+    "email": "test@example.com",
+    "password": "password123"
+}
+
+###
+
+### 3. Get Profile (Requires Token)
+# Replace <YOUR_TOKEN_HERE> with the token from Step 2
+GET http://localhost:5000/api/user/profile
+Authorization: Bearer <YOUR_TOKEN_HERE>
