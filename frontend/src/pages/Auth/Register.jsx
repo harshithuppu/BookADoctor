@@ -33,13 +33,13 @@ const Register = () => {
     };
 
     return (
-        <div className="register-page bg-light min-vh-100 d-flex align-items-center">
+        <div className="register-page min-vh-100 d-flex align-items-center" style={{ background: 'linear-gradient(135deg, #EFEBE9 0%, #FDF9F7 100%)' }}>
             <Container>
                 <Row className="justify-content-center">
                     <Col md={8} lg={6}>
-                        <Card className="shadow-lg border-0 rounded-4">
+                        <Card className="border-0 rounded-4" style={{ boxShadow: '0 16px 50px rgba(109,76,65,0.18)', border: '1px solid #D7CCC8' }}>
                             <Card.Body className="p-5">
-                                <h2 className="text-center fw-bold mb-4 text-primary">Register</h2>
+                                <h2 className="text-center fw-bold mb-4" style={{ color: '#6D4C41' }}>Register</h2>
                                 <Form onSubmit={handleSubmit}>
                                     <MDBInput 
                                         wrapperClass='mb-4' 
@@ -77,11 +77,11 @@ const Register = () => {
                                         </Form.Select>
                                     </Form.Group>
                                     
-                                    <Button variant="primary" type="submit" className="w-100 py-2 fw-bold mb-3 shadow-sm">
+                                    <Button type="submit" className="w-100 py-2 fw-bold mb-3" style={{ backgroundColor: '#6D4C41', borderColor: '#6D4C41', color: '#fff', borderRadius: '10px', boxShadow: '0 4px 14px rgba(109,76,65,0.25)' }}>
                                         Create Account
                                     </Button>
                                     <p className="text-center mb-0">
-                                        Already have an account? <Link to="/login" className="text-primary text-decoration-none fw-bold">Login</Link>
+                                        Already have an account? <Link to="/login" style={{ color: '#6D4C41' }} className="text-decoration-none fw-bold">Login</Link>
                                     </p>
                                 </Form>
                             </Card.Body>

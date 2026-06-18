@@ -1,40 +1,40 @@
 import { Navbar, Nav, Container, Button, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import p3 from '../assets/p3.jpg';
+import HeroAnimation from '../components/HeroAnimation';
 
 const Home = () => {
     return (
         <div className="home-page">
-            <Navbar bg="light" expand="lg" sticky="top">
+            <Navbar expand="lg" sticky="top" style={{ backgroundColor: '#FFFFFF', borderBottom: '1px solid #D7CCC8', boxShadow: '0 2px 12px rgba(109,76,65,0.12)' }}>
                 <Container>
-                    <Navbar.Brand as={Link} to="/" className="fw-bold text-primary">BookADoctor</Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/" style={{ color: '#6D4C41', fontWeight: 800, fontSize: '1.4rem', letterSpacing: '-0.5px' }}>BookADoctor</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
-                            <Nav.Link as={Link} to="/">Home</Nav.Link>
-                            <Nav.Link as={Link} to="/login">Login</Nav.Link>
-                            <Nav.Link as={Link} to="/register">Register</Nav.Link>
+                            <Nav.Link as={Link} to="/" style={{ color: '#3E2723', fontWeight: 500 }}>Home</Nav.Link>
+                            <Nav.Link as={Link} to="/login" style={{ color: '#3E2723', fontWeight: 500 }}>Login</Nav.Link>
+                            <Nav.Link as={Link} to="/register" style={{ color: '#3E2723', fontWeight: 500 }}>Register</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
 
-            <header className="hero-section py-5">
+            <header className="hero-section py-5" style={{ background: 'linear-gradient(135deg, #FDF9F7 0%, #EFEBE9 100%)', minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
                 <Container>
                     <Row className="align-items-center">
                         <Col md={6}>
-                            <img src={p3} alt="Hero" className="img-fluid rounded shadow" />
+                            <HeroAnimation />
                         </Col>
                         <Col md={6}>
-                            <h1 className="display-4 fw-bold mb-3">Your Health, Our Priority</h1>
-                            <p className="lead mb-4">Book appointments with top doctors in seconds. Seamless healthcare at your fingertips.</p>
-                            <Button as={Link} to="/login" variant="primary" size="lg">Book your Doctor</Button>
+                            <h1 className="display-4 fw-bold mb-3" style={{ color: '#3E2723' }}>Your Health, Our Priority</h1>
+                            <p className="lead mb-4" style={{ color: '#8D6E63' }}>Book appointments with top doctors in seconds. Seamless healthcare at your fingertips.</p>
+                            <Button as={Link} to="/login" size="lg" style={{ backgroundColor: '#6D4C41', borderColor: '#6D4C41', color: '#fff', padding: '12px 32px', borderRadius: '12px', fontWeight: 600, boxShadow: '0 4px 14px rgba(109,76,65,0.3)', transition: 'all 0.3s ease' }}>Book your Doctor</Button>
                         </Col>
                     </Row>
                 </Container>
             </header>
 
-            <section className="about-us py-5 bg-white">
+            <section className="about-us py-5" style={{ backgroundColor: '#FFFFFF' }}>
                 <Container>
                     <h2 className="text-center mb-5 fw-bold">About Us</h2>
                     <Row>
@@ -60,9 +60,9 @@ const Home = () => {
                 </Container>
             </section>
 
-            <footer className="py-4 bg-light text-center">
+            <footer className="py-4 text-center" style={{ backgroundColor: '#EFEBE9', borderTop: '1px solid #D7CCC8' }}>
                 <Container>
-                    <p className="mb-0 text-muted">&copy; 2024 BookADoctor. All rights reserved.</p>
+                    <p className="mb-0" style={{ color: '#8D6E63' }}>&copy; 2024 BookADoctor. All rights reserved.</p>
                 </Container>
             </footer>
         </div>

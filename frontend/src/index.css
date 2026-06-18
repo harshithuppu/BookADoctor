@@ -1,46 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 :root {
-  --primary-color: #0d6efd;
-  --bg-light: #f8f9fa;
+  /* Brown & White Theme */
+  --primary:        #6D4C41;   /* deep warm brown */
+  --primary-dark:   #4E342E;   /* darker brown for hover */
+  --primary-light:  #A1887F;   /* muted rose-brown */
+  --primary-xlight: #EFEBE9;   /* very light warm beige */
+  --accent:         #D7A96E;   /* golden caramel accent */
+  --white:          #FFFFFF;
+  --off-white:      #FDF9F7;   /* warm off-white */
+  --text-dark:      #3E2723;   /* almost-black brown */
+  --text-muted:     #8D6E63;   /* muted brown */
+  --border:         #D7CCC8;   /* soft border */
+  --shadow-color:   rgba(109, 76, 65, 0.18);
+
+  /* Bootstrap overrides via CSS variables */
+  --bs-primary:        #6D4C41;
+  --bs-primary-rgb:    109, 76, 65;
+  --bs-link-color:     #6D4C41;
+  --bs-link-hover-color: #4E342E;
+  --bs-body-bg:        #FDF9F7;
+  --bs-body-color:     #3E2723;
+  --bs-border-color:   #D7CCC8;
 }
+
+/* ── Base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--bg-light);
-  color: #212529;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--off-white);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
 }
 
-.cursor-pointer {
-  cursor: pointer;
+/* ── Bootstrap .btn-primary override ──────────────── */
+.btn-primary {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: var(--white) !important;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: var(--primary-dark) !important;
+  border-color: var(--primary-dark) !important;
+  box-shadow: 0 4px 14px var(--shadow-color) !important;
 }
 
-.transition-all {
+/* ── Bootstrap .btn-outline-primary override ────────── */
+.btn-outline-primary {
+  color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+.btn-outline-primary:hover {
+  background-color: var(--primary) !important;
+  color: var(--white) !important;
+}
+
+/* ── Bootstrap .text-primary override ──────────────── */
+.text-primary { color: var(--primary) !important; }
+
+/* ── Bootstrap .bg-primary override ────────────────── */
+.bg-primary { background-color: var(--primary) !important; }
+
+/* ── Bootstrap Badge primary override ──────────────── */
+.badge.bg-primary { background-color: var(--primary) !important; }
+
+/* ── Navbar ──────────────────────────────────────── */
+.navbar {
+  background-color: var(--white) !important;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 12px var(--shadow-color);
+}
+.navbar-brand {
+  color: var(--primary) !important;
+  font-weight: 800 !important;
+  font-size: 1.4rem !important;
+  letter-spacing: -0.5px;
+}
+.nav-link {
+  color: var(--text-dark) !important;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: var(--primary) !important; }
+
+/* ── Hero Section ─────────────────────────────────── */
+.hero-section {
+  background: linear-gradient(135deg, var(--off-white) 0%, var(--primary-xlight) 100%);
+  padding: 80px 0;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+.hero-section h1 { color: var(--text-dark); }
+.hero-section .lead { color: var(--text-muted); }
+
+/* ── About / Feature Cards ────────────────────────── */
+.about-us { background-color: var(--white); }
+.about-us h2 { color: var(--text-dark); }
+.about-us .border {
+  border-color: var(--border) !important;
+  border-radius: 16px !important;
   transition: all 0.3s ease;
 }
+.about-us .border:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px var(--shadow-color) !important;
+  border-color: var(--primary-light) !important;
+}
+.about-us h3 { color: var(--primary); }
+.about-us .text-muted { color: var(--text-muted) !important; }
+
+/* ── Footer ──────────────────────────────────────── */
+footer {
+  background-color: var(--primary-xlight) !important;
+  border-top: 1px solid var(--border);
+}
+footer .text-muted { color: var(--text-muted) !important; }
+
+/* ── Sidebar ─────────────────────────────────────── */
+.sidebar {
+  background: linear-gradient(180deg, var(--primary-dark) 0%, var(--primary) 100%) !important;
+  box-shadow: 4px 0 20px var(--shadow-color);
+}
+.sidebar .active-menu-item {
+  background-color: var(--white) !important;
+  color: var(--primary) !important;
+}
+
+/* ── Auth Pages ──────────────────────────────────── */
+.auth-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary-xlight) 0%, var(--white) 100%);
+  display: flex;
+  align-items: center;
+}
+.auth-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 16px 50px var(--shadow-color);
+}
+
+/* ── Form controls ───────────────────────────────── */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 0.25rem rgba(109, 76, 65, 0.2) !important;
+}
+.form-label { color: var(--text-dark); font-weight: 500; }
+
+/* ── Cards / Panels ──────────────────────────────── */
+.card {
+  border-color: var(--border) !important;
+  border-radius: 14px !important;
+}
+.card-header {
+  background-color: var(--primary-xlight) !important;
+  border-bottom: 1px solid var(--border) !important;
+  color: var(--text-dark);
+}
+
+/* ── Antd Tag / Badge override ───────────────────── */
+.ant-tag-green  { color: #388E3C !important; background: #E8F5E9 !important; border-color: #A5D6A7 !important; }
+.ant-tag-orange { color: #E65100 !important; background: #FFF3E0 !important; border-color: #FFCC80 !important; }
+.ant-tag-blue   { color: var(--primary) !important; background: var(--primary-xlight) !important; border-color: var(--primary-light) !important; }
+.ant-tag-red    { color: #C62828 !important; background: #FFEBEE !important; border-color: #EF9A9A !important; }
+
+/* ── Notification Badge ──────────────────────────── */
+.ant-badge-count { background-color: var(--primary) !important; }
+
+/* ── Table ───────────────────────────────────────── */
+.table thead th {
+  background-color: var(--primary-xlight);
+  color: var(--text-dark);
+  border-bottom: 2px solid var(--border);
+}
+.table tbody tr:hover { background-color: var(--primary-xlight); }
+
+/* ── Utilities ───────────────────────────────────── */
+.cursor-pointer  { cursor: pointer; }
+.transition-all  { transition: all 0.3s ease; }
 
 .hover-shadow:hover {
   transform: translateY(-5px);
-  box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+  box-shadow: 0 1rem 3rem var(--shadow-color) !important;
 }
-
 .hover-overlay:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.12);
   color: white !important;
 }
-
 .hover-bg-dark-light:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.06);
 }
 
-.custom-tabs .ant-tabs-nav::before {
-  border-bottom: 2px solid #f0f0f0;
-}
-
-.animate__fadeIn {
-  animation: fadeIn 0.5s ease-in;
-}
-
+/* ── Fade-in animation ───────────────────────────── */
+.animate__fadeIn { animation: fadeIn 0.5s ease-in; }
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }

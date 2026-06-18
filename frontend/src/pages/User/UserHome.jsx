@@ -76,19 +76,28 @@ const UserHome = () => {
     };
 
     return (
-        <div className="user-dashboard d-flex min-vh-100 bg-light">
+        <div className="user-dashboard d-flex min-vh-100" style={{ backgroundColor: '#FDF9F7' }}>
             {/* Sidebar */}
-            <div className="sidebar bg-primary text-white p-4" style={{ width: '280px' }}>
-                <h2 className="fw-bold mb-5 fs-4">BookADoctor</h2>
+            <div className="sidebar text-white p-4" style={{ width: '280px', background: 'linear-gradient(180deg, #4E342E 0%, #6D4C41 100%)', boxShadow: '4px 0 20px rgba(109,76,65,0.22)' }}>
+                <h2 className="fw-bold mb-5 fs-4" style={{ color: '#D7A96E', letterSpacing: '-0.3px' }}>BookADoctor</h2>
                 <nav className="d-flex flex-column gap-3">
                     {menuItems.map(item => {
                         if (item.hideIfDoctor && userData?.isdoctor) return null;
+                        const isActive = activeMenuItem === item.id;
                         return (
-                            <div 
+                            <div
                                 key={item.id}
-                                className={`p-3 rounded-3 cursor-pointer d-flex align-items-center gap-3 transition-all ${activeMenuItem === item.id ? 'bg-white text-primary fw-bold' : 'hover-overlay text-white-50'}`}
+                                className="p-3 rounded-3 cursor-pointer d-flex align-items-center gap-3 transition-all"
                                 onClick={item.onClick || (() => setActiveMenuItem(item.id))}
-                                style={{ cursor: 'pointer' }}
+                                style={{
+                                    cursor: 'pointer',
+                                    backgroundColor: isActive ? '#FFFFFF' : 'transparent',
+                                    color: isActive ? '#6D4C41' : 'rgba(255,255,255,0.72)',
+                                    fontWeight: isActive ? '700' : '400',
+                                    transition: 'all 0.25s ease',
+                                }}
+                                onMouseEnter={e => { if (!isActive) e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)'; }}
+                                onMouseLeave={e => { if (!isActive) e.currentTarget.style.backgroundColor = 'transparent'; }}
                             >
                                 {item.icon}
                                 {item.title}
@@ -101,15 +110,15 @@ const UserHome = () => {
             {/* Main Section */}
             <div className="flex-grow-1">
                 {/* Header */}
-                <header className="bg-white p-3 shadow-sm d-flex justify-content-between align-items-center px-5">
-                    <h3 className="h5 mb-0 text-muted">Dashboard / {activeMenuItem.toUpperCase()}</h3>
+                <header className="p-3 shadow-sm d-flex justify-content-between align-items-center px-5" style={{ backgroundColor: '#FFFFFF', borderBottom: '1px solid #D7CCC8' }}>
+                    <h3 className="h5 mb-0" style={{ color: '#8D6E63' }}>Dashboard / {activeMenuItem.toUpperCase()}</h3>
                     <div className="d-flex align-items-center gap-4">
-                        <div 
-                            className="position-relative cursor-pointer" 
+                        <div
+                            className="position-relative cursor-pointer"
                             onClick={() => setActiveMenuItem('notifications')}
                             style={{ cursor: 'pointer' }}
                         >
-                            <BellOutlined style={{ fontSize: '20px' }} />
+                            <BellOutlined style={{ fontSize: '20px', color: '#6D4C41' }} />
                             {(userData?.notifications?.length || 0) > 0 && (
                                 <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle" style={{ fontSize: '10px' }}>
                                     {userData.notifications.length}
@@ -117,10 +126,10 @@ const UserHome = () => {
                             )}
                         </div>
                         <div className="d-flex align-items-center gap-2">
-                            <div className="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style={{ width: '35px', height: '35px' }}>
+                            <div className="text-white rounded-circle d-flex align-items-center justify-content-center fw-bold" style={{ width: '35px', height: '35px', backgroundColor: '#6D4C41' }}>
                                 {userData?.name ? userData.name.charAt(0) : 'U'}
                             </div>
-                            <span className="fw-bold text-dark">{userData?.name || 'User'}</span>
+                            <span className="fw-bold" style={{ color: '#3E2723' }}>{userData?.name || 'User'}</span>
                         </div>
                     </div>
                 </header>
